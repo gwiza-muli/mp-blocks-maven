@@ -85,31 +85,6 @@ public class HorizontalCompositionCenter implements AsciiBlock {
 
 
 
-
-
-  // public String row(int i) throws Exception {
-  //   int height = Math.max(this.left.height(), this.right.height());
-  //   int leftSpace = height - this.left.height();
-  //   int rightSpace = height - this.right.height();
-  //   int spaces = (height - Math.min(this.left.height(), this.right.height()));
-
-  //   if ((i < 0) || (i >= this.height())) {
-  //     // Outside of normal bounds
-  //     throw new Exception("Invalid row " + i);
-  //   }
-  //   if (i >= spaces && i < spaces + leftSpace && i >= spaces && i < spaces + rightSpace) {
-  //     return this.left.row(i - spaces) + this.right.row(i - spaces);
-  //   }
-  //   else if (i >= spaces && i < spaces + leftSpace){
-  //     return this.left.row(i - spaces) + " ".repeat(this.right.width());
-  //   }
-  //   else if (i >= spaces && i < spaces + rightSpace){
-  //     return " ".repeat(this.left.width()) + this.right.row(i - spaces);
-  //   } else {
-  //     return " ".repeat(this.width());
-  //   }
-  // }
-
   /**
    * Determine how many rows are in the block.
    *

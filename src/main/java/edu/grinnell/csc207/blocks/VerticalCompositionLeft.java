@@ -84,10 +84,12 @@ public class VerticalCompositionLeft implements AsciiBlock {
     return Math.max(this.above.width(), this.below.width());
   } // width()
 
-  @Override
   public boolean eqv(AsciiBlock other) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'eqv'");
+    if(!(other instanceof VerticalCompositionLeft)) {
+      return false;
+    }
+    VerticalCompositionLeft otherCenter = (VerticalCompositionLeft) other; 
+    return this.above.eqv(otherCenter.above) && this.above.eqv(otherCenter.above);
   }
 } // class VerticalCompositionLeft
 

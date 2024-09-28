@@ -55,32 +55,16 @@ public class VerticalCompositionCenter implements AsciiBlock {
       int offset = this.width() - this.above.width();
       int leftSpace = offset / 2;
       int rightSpace = offset - leftSpace;
+      return " ".repeat(leftSpace) + aboveRow + " ".repeat(rightSpace);
 
-      if (offset % 2 != 0){
-        offset = (offset + 1) / 2;
-        leftSpace = (offset + 1) / 2;
-        rightSpace = offset  - leftSpace;
-      }
-
-      String leftString = " ".repeat(leftSpace);
-      String rightString = " ".repeat(rightSpace);
-      return leftString + aboveRow + rightSpace;
     } else {
       int belowIndex = i - this.above.height();
       String belowRow = this.below.row(belowIndex);
       int offset = this.width() - this.below.width();
       int leftSpace = offset / 2;
       int rightSpace = offset - leftSpace;
-      if (offset % 2 != 0){
-        offset = (offset + 1) / 2;
-        leftSpace = (offset + 1) / 2;
-        rightSpace = offset  - leftSpace;
-      }
-      String leftString = " ".repeat(leftSpace);
-      String rightString = " ".repeat(rightSpace);
-      return leftString + belowRow + rightSpace;
+      return " ".repeat(leftSpace) + belowRow + " ".repeat(rightSpace);
     
-
     }
    }
  

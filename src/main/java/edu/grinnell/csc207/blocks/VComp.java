@@ -76,11 +76,11 @@ public class VComp implements AsciiBlock {
 
       for (int x = 2; x < this.blocks.length; x++) {
         if (this.align == HAlignment.LEFT) {
-          accumulator = new HorizontalCompositionTop(accumulator, this.blocks[x]);
+          accumulator = new VerticalCompositionLeft(accumulator, this.blocks[x]);
         } else if (this.align == HAlignment.CENTER) {
-          accumulator = new HorizontalCompositionCenter(accumulator, this.blocks[x]);
+          accumulator = new VerticalCompositionCenter(accumulator, this.blocks[x]);
         } else if (this.align == HAlignment.RIGHT) {
-          accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
+          accumulator = new VerticalCompositionRight(accumulator, this.blocks[x]);
         } else {
           throw new IllegalArgumentException("Invalid alignment");
         }

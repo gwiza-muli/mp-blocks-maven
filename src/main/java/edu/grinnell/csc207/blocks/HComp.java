@@ -71,7 +71,16 @@ public class HComp implements AsciiBlock {
    * @exception Exception if i is outside the range of valid rows.
    */
   public AsciiBlock reduce() {
+
+
+
     AsciiBlock accumulator;
+
+    if (this.blocks.length == 0){
+      return new Empty();
+    }
+
+
     if (this.align == VAlignment.TOP) {
       accumulator = new HorizontalCompositionTop(this.blocks[0], this.blocks[1]);
     } else if (this.align == VAlignment.CENTER) {
@@ -81,7 +90,6 @@ public class HComp implements AsciiBlock {
     } else {
       throw new IllegalArgumentException("Invalid alignment");
     }
-
 
     for (int x = 2; x < this.blocks.length; x++) {
       if (this.align == VAlignment.TOP) {
@@ -96,6 +104,31 @@ public class HComp implements AsciiBlock {
     }
 
     return accumulator;
+
+    // if (this.align == VAlignment.TOP) {
+    //   accumulator = new HorizontalCompositionTop(this.blocks[0], this.blocks[1]);
+    // } else if (this.align == VAlignment.CENTER) {
+    //   accumulator = new HorizontalCompositionCenter(this.blocks[0], this.blocks[1]);
+    // } else if (this.align == VAlignment.BOTTOM) {
+    //   accumulator = new HorizontalCompositionBottom(this.blocks[0], this.blocks[1]);
+    // } else {
+    //   throw new IllegalArgumentException("Invalid alignment");
+    // }
+
+
+    // for (int x = 2; x < this.blocks.length; x++) {
+    //   if (this.align == VAlignment.TOP) {
+    //     accumulator = new HorizontalCompositionTop(accumulator, this.blocks[x]);
+    //   } else if (this.align == VAlignment.CENTER) {
+    //     accumulator = new HorizontalCompositionCenter(accumulator, this.blocks[x]);
+    //   } else if (this.align == VAlignment.BOTTOM) {
+    //     accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
+    //   } else {
+    //     throw new IllegalArgumentException("Invalid alignment");
+    //   }
+    // }
+
+    // return accumulator;
   }
   // row(int)
 

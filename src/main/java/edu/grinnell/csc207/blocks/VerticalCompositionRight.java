@@ -2,33 +2,90 @@ package edu.grinnell.csc207.blocks;
 
 public class VerticalCompositionRight implements AsciiBlock{
 
-  public VerticalCompositionRight(AsciiBlock asciiBlock, AsciiBlock asciiBlock2) {
-    //TODO Auto-generated constructor stub
-  }
+  // +--------+------------------------------------------------------------
+  // | Fields |
+  // +--------+
 
-  @Override
+  /**
+   * The top block.
+   */
+  AsciiBlock above;
+
+  /**
+   * The below block.
+   */
+  AsciiBlock below;
+
+  // +--------------+------------------------------------------------------
+  // | Constructors |
+  // +--------------+
+
+  /**
+   * Build a Horizontal Composition.
+   *
+   * @param aboveBlock
+   *   The top block.
+   *
+   * @param belowBlock
+   *   The bottom block.
+   */
+  public VerticalCompositionRight(AsciiBlock aboveBlock, AsciiBlock belowBlock) {
+    this.above = aboveBlock;
+    this.below = belowBlock;
+  } // VerticalCompositionLeft
+
+  // +---------+-----------------------------------------------------------
+  // | Methods |
+  // +---------+
+
+  /**
+   * Get one row from the block.
+   *
+   * @param i the number of the row
+   *
+   * @return row i.
+   *
+   * @exception Exception
+   *   if i is outside the range of valid rows.
+   */
   public String row(int i) throws Exception {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'row'");
-  }
+    if ((i < 0) || (i >= this.height())) {
+      // Outside of normal bounds
+      throw new Exception("Invalid row " + i);
 
-  @Override
+    } else if (i < this.above.height()) {
+      // In the top block
+      return " ".repeat(this.width() - this.above.width()) + this.above.row(i);
+    } else {
+      // In the bottom block
+      return " ".repeat(this.width() - this.below.width()) + this.below.row(i - this.above.height());
+    } // if/else
+  } // row(int)
+
+  /**
+   * Determine how many rows are in the block.
+   *
+   * @return the number of rows
+   */
   public int height() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'height'");
-  }
+    return this.above.height() + this.below.height();
+  } // height()
 
-  @Override
+  /**
+   * Determine how many columns are in the block.
+   *
+   * @return the number of columns
+   */
   public int width() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'width'");
-  }
+    return Math.max(this.above.width(), this.below.width());
+  } // width()
 
   @Override
   public boolean eqv(AsciiBlock other) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'eqv'");
+    if(!(other instanceof VerticalCompositionLeft)) {
+      return false;
+    }
+    VerticalCompositionRight otherCenter = (VerticalCompositionRight) other; 
+    return this.above.eqv(otherCenter.above) && this.above.eqv(otherCenter.above);
   }
-
-  
-}
+  } // class VerticalCompositionLeft
