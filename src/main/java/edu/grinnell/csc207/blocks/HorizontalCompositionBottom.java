@@ -62,7 +62,8 @@ public class HorizontalCompositionBottom implements AsciiBlock {
           + this.right.row(i - (this.height() - this.right.height()));
     } else if (i >= this.height() - this.right.height()) {
       // Inside right bounds, outside left bounds
-      return this.left.row(i - (this.height() - this.left.height())) + " ".repeat(this.right.width());
+      return this.left.row(i - (this.height() - this.left.height()))
+          + " ".repeat(this.right.width());
     } else if (i >= this.height() - this.left.height()) {
       return " ".repeat(this.left.width())
           + this.right.row(i - (this.height() - this.right.height()));
@@ -98,10 +99,10 @@ public class HorizontalCompositionBottom implements AsciiBlock {
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    if(!(other instanceof HorizontalCompositionBottom)) {
+    if (!(other instanceof HorizontalCompositionBottom)) {
       return false;
     }
-    HorizontalCompositionBottom otherCenter = (HorizontalCompositionBottom) other; 
+    HorizontalCompositionBottom otherCenter = (HorizontalCompositionBottom) other;
     return this.left.eqv(otherCenter.left) && this.right.eqv(otherCenter.right);
   } // eqv(AsciiBlock)
 
