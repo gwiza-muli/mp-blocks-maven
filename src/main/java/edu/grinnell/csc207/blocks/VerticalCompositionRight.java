@@ -1,6 +1,6 @@
 package edu.grinnell.csc207.blocks;
 
-public class VerticalCompositionRight implements AsciiBlock{
+public class VerticalCompositionRight implements AsciiBlock {
 
   // +--------+------------------------------------------------------------
   // | Fields |
@@ -23,11 +23,9 @@ public class VerticalCompositionRight implements AsciiBlock{
   /**
    * Build a Horizontal Composition.
    *
-   * @param aboveBlock
-   *   The top block.
+   * @param aboveBlock The top block.
    *
-   * @param belowBlock
-   *   The bottom block.
+   * @param belowBlock The bottom block.
    */
   public VerticalCompositionRight(AsciiBlock aboveBlock, AsciiBlock belowBlock) {
     this.above = aboveBlock;
@@ -45,8 +43,7 @@ public class VerticalCompositionRight implements AsciiBlock{
    *
    * @return row i.
    *
-   * @exception Exception
-   *   if i is outside the range of valid rows.
+   * @exception Exception if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
     if ((i < 0) || (i >= this.height())) {
@@ -58,7 +55,8 @@ public class VerticalCompositionRight implements AsciiBlock{
       return " ".repeat(this.width() - this.above.width()) + this.above.row(i);
     } else {
       // In the bottom block
-      return " ".repeat(this.width() - this.below.width()) + this.below.row(i - this.above.height());
+      return " ".repeat(this.width() - this.below.width())
+          + this.below.row(i - this.above.height());
     } // if/else
   } // row(int)
 
@@ -82,10 +80,10 @@ public class VerticalCompositionRight implements AsciiBlock{
 
   @Override
   public boolean eqv(AsciiBlock other) {
-    if(!(other instanceof VerticalCompositionLeft)) {
+    if (!(other instanceof VerticalCompositionLeft)) {
       return false;
     }
-    VerticalCompositionRight otherCenter = (VerticalCompositionRight) other; 
+    VerticalCompositionRight otherCenter = (VerticalCompositionRight) other;
     return this.above.eqv(otherCenter.above) && this.above.eqv(otherCenter.above);
   }
-  } // class VerticalCompositionLeft
+} // class VerticalCompositionLeft

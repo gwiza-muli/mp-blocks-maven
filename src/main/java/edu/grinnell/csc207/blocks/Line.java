@@ -22,8 +22,7 @@ public class Line implements AsciiBlock {
   /**
    * Build a new line.
    *
-   * @param contents
-   *   The contents of the line.
+   * @param contents The contents of the line.
    */
   public Line(String contents) {
     this.line = contents;
@@ -40,8 +39,7 @@ public class Line implements AsciiBlock {
    *
    * @return row i.
    *
-   * @exception Exception
-   *   if i is outside the range of valid rows.
+   * @exception Exception if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
     if (i != 0) {
@@ -71,14 +69,12 @@ public class Line implements AsciiBlock {
   /**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return false; // STUB
   } // eqv(AsciiBlock)
 
   // +---------------+-----------------------------------------------
@@ -88,8 +84,7 @@ public class Line implements AsciiBlock {
   /**
    * Update the line.
    *
-   * @param newContents
-   *   The new contents of the line.
+   * @param newContents The new contents of the line.
    */
   public void update(String newContents) {
     this.line = newContents;

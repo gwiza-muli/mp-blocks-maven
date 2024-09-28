@@ -134,16 +134,17 @@ public class VComp implements AsciiBlock {
   } // width()
 
   // /**
-  //  * Determine if another block is structurally equivalent to this block.
-  //  *
-  //  * @param other The block to compare to this block.
-  //  *
-  //  * @return true if the two blocks are structurally equivalent and false otherwise.
-  //  */
+  // * Determine if another block is structurally equivalent to this block.
+  // *
+  // * @param other The block to compare to this block.
+  // *
+  // * @return true if the two blocks are structurally equivalent and false otherwise.
+  // */
   // public boolean eqv(AsciiBlock other) {
-    
-  //   return false;
-  //   // return this.result.eqv(other); // STUB \\ MNtjsdfSDKLfjsdafbvgvgggggggggggggggggggggggggggggg
+
+  // return false;
+  // // return this.result.eqv(other); // STUB \\
+  // MNtjsdfSDKLfjsdafbvgvgggggggggggggggggggggggggggggg
   // } // eqv(AsciiBlock)
 
 
@@ -151,25 +152,23 @@ public class VComp implements AsciiBlock {
   /**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof VComp) && (this.eqv((VComp) other)));
   } // eqv(AsciiBlock)
 
-   /**
+  /**
    * Determine if this VComp is structurally equivalent to another.
    *
    * @param other The block to compare to this block.
    *
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
-   
-   public boolean eqv(VComp other) {
+
+  public boolean eqv(VComp other) {
     return (this.width() == other.width()) && (this.height() == other.height())
         && (Arrays.equals(this.blocks, other.blocks));
   } // eqv(HComp)

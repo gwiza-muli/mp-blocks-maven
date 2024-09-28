@@ -48,21 +48,15 @@ public class Padded implements AsciiBlock {
   /**
    * Build a new block with the specified contents.
    *
-   * @param original
-   *   The original block.
-   * @param ch
-   *   The character we use for padding.
-   * @param horiz
-   *   How the original block is horizontally aligned within the padding.
-   * @param vert
-   *   How the original block is vertically aligned within the padding.
-   * @param paddedWidth
-   *   The width of the padded block.
-   * @param paddedHeight
-   *   The height of the padded block.
+   * @param original The original block.
+   * @param ch The character we use for padding.
+   * @param horiz How the original block is horizontally aligned within the padding.
+   * @param vert How the original block is vertically aligned within the padding.
+   * @param paddedWidth The width of the padded block.
+   * @param paddedHeight The height of the padded block.
    */
-  public Padded(AsciiBlock original, char ch, HAlignment horiz,
-      VAlignment vert, int paddedWidth, int paddedHeight) {
+  public Padded(AsciiBlock original, char ch, HAlignment horiz, VAlignment vert, int paddedWidth,
+      int paddedHeight) {
     this.block = original;
     this.pad = new String(new char[] {ch});
     this.halign = horiz;
@@ -82,8 +76,7 @@ public class Padded implements AsciiBlock {
    *
    * @return row i.
    *
-   * @exception Exception
-   *   If the row is invalid.
+   * @exception Exception If the row is invalid.
    */
   public String row(int i) throws Exception {
     throw new Exception("Not yet implemented"); // STUB
@@ -95,7 +88,7 @@ public class Padded implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    return 0; // STUB
   } // height()
 
   /**
@@ -104,19 +97,17 @@ public class Padded implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    return 0; // STUB
   } // width()
 
   /**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return false; // STUB
   } // eqv(AsciiBlock)
 } // class Padded

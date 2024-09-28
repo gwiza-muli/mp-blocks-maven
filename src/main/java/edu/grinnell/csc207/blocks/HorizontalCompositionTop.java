@@ -28,11 +28,9 @@ public class HorizontalCompositionTop implements AsciiBlock {
   /**
    * Build a Horizontal Composition.
    *
-   * @param leftBlock
-   *   The block on the left.
+   * @param leftBlock The block on the left.
    *
-   * @param rightBlock
-   *   The block on the right.
+   * @param rightBlock The block on the right.
    */
   public HorizontalCompositionTop(AsciiBlock leftBlock, AsciiBlock rightBlock) {
     this.left = leftBlock;
@@ -50,8 +48,7 @@ public class HorizontalCompositionTop implements AsciiBlock {
    *
    * @return row i.
    *
-   * @exception Exception
-   *   if i is outside the range of valid rows.
+   * @exception Exception if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
     if ((i < 0) || (i >= this.height())) {
@@ -91,17 +88,15 @@ public class HorizontalCompositionTop implements AsciiBlock {
   /**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    if(!(other instanceof HorizontalCompositionCenter)) {
+    if (!(other instanceof HorizontalCompositionCenter)) {
       return false;
     }
-    HorizontalCompositionTop otherTop = (HorizontalCompositionTop) other; 
+    HorizontalCompositionTop otherTop = (HorizontalCompositionTop) other;
     return this.left.eqv(otherTop.left) && this.right.eqv(otherTop.right);
   } // eqv(AsciiBlock)
 

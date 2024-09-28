@@ -71,41 +71,41 @@ public class HComp implements AsciiBlock {
    * @exception Exception if i is outside the range of valid rows.
    */
   public AsciiBlock reduce() {
-    
-    
-    if (this.blocks.length == 0){
+
+
+    if (this.blocks.length == 0) {
       return new Empty();
     }
-    
+
     AsciiBlock accumulator = this.blocks[0];
-    
-    if (accumulator.height() == 0 && accumulator.width() == 0){
+
+    if (accumulator.height() == 0 && accumulator.width() == 0) {
       accumulator = new Empty();
     }
-    
-    if (this.blocks.length > 1){
-    if (this.align == VAlignment.TOP) {
-      accumulator = new HorizontalCompositionTop(this.blocks[0], this.blocks[1]);
-    } else if (this.align == VAlignment.CENTER) {
-      accumulator = new HorizontalCompositionCenter(this.blocks[0], this.blocks[1]);
-    } else if (this.align == VAlignment.BOTTOM) {
-      accumulator = new HorizontalCompositionBottom(this.blocks[0], this.blocks[1]);
-    } else {
-      throw new IllegalArgumentException("Invalid alignment");
-    }
 
-    for (int x = 2; x < this.blocks.length; x++) {
+    if (this.blocks.length > 1) {
       if (this.align == VAlignment.TOP) {
-        accumulator = new HorizontalCompositionTop(accumulator, this.blocks[x]);
+        accumulator = new HorizontalCompositionTop(this.blocks[0], this.blocks[1]);
       } else if (this.align == VAlignment.CENTER) {
-        accumulator = new HorizontalCompositionCenter(accumulator, this.blocks[x]);
+        accumulator = new HorizontalCompositionCenter(this.blocks[0], this.blocks[1]);
       } else if (this.align == VAlignment.BOTTOM) {
-        accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
+        accumulator = new HorizontalCompositionBottom(this.blocks[0], this.blocks[1]);
       } else {
         throw new IllegalArgumentException("Invalid alignment");
       }
+
+      for (int x = 2; x < this.blocks.length; x++) {
+        if (this.align == VAlignment.TOP) {
+          accumulator = new HorizontalCompositionTop(accumulator, this.blocks[x]);
+        } else if (this.align == VAlignment.CENTER) {
+          accumulator = new HorizontalCompositionCenter(accumulator, this.blocks[x]);
+        } else if (this.align == VAlignment.BOTTOM) {
+          accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
+        } else {
+          throw new IllegalArgumentException("Invalid alignment");
+        }
+      }
     }
-  }
     return accumulator;
   }
   // row(int)
@@ -144,14 +144,12 @@ public class HComp implements AsciiBlock {
   } // width()
 
 
-    /**
+  /**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof HComp) && (this.eqv((HComp) other)));
@@ -165,7 +163,7 @@ public class HComp implements AsciiBlock {
    *
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
-   
+
   public boolean eqv(HComp other) {
     return (this.width() == other.width()) && (this.height() == other.height())
         && (Arrays.equals(this.blocks, other.blocks));

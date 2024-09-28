@@ -25,8 +25,7 @@ public class HFlip implements AsciiBlock {
   /**
    * Build a new block with the specified contents.
    *
-   * @param original
-   *   The original block.
+   * @param original The original block.
    */
   public HFlip(AsciiBlock original) {
     this.block = original;
@@ -43,12 +42,11 @@ public class HFlip implements AsciiBlock {
    *
    * @return row i.
    *
-   * @exception Exception
-   *   If the row is invalid.
+   * @exception Exception If the row is invalid.
    */
   public String row(int i) throws Exception {
     String reverse = "";
-    for (int x = 0; x < this.block.width(); x++){
+    for (int x = 0; x < this.block.width(); x++) {
       reverse += this.block.row(i).charAt(this.block.width() - x - 1);
     }
     return reverse;
@@ -60,7 +58,7 @@ public class HFlip implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return this.block.height();  // STUB
+    return this.block.height(); // STUB
   } // height()
 
   /**
@@ -69,17 +67,15 @@ public class HFlip implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return this.block.width();   // STUB
+    return this.block.width(); // STUB
   } // width()
 
-     /**
+  /**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof HFlip) && (this.eqv((HFlip) other)));
@@ -93,9 +89,9 @@ public class HFlip implements AsciiBlock {
    *
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
-   
+
   public boolean eqv(HFlip other) {
     return (this.width() == other.width()) && (this.height() == other.height())
-        && (this.block.eqv(other)) ;
+        && (this.block.eqv(other));
   } // eqv(HComp)
 } // class HFlip

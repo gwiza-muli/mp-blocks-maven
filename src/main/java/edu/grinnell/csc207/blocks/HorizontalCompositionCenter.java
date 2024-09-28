@@ -52,10 +52,10 @@ public class HorizontalCompositionCenter implements AsciiBlock {
    * @exception Exception if i is outside the range of valid rows.
    */
 
-   public String row(int i) throws Exception {
+  public String row(int i) throws Exception {
     int height = Math.max(this.left.height(), this.right.height());
 
-    int leftSpace = (height - this.left.height() ) / 2;
+    int leftSpace = (height - this.left.height()) / 2;
     int rightSpace = (height - this.right.height()) / 2;
     int spaces = (height - Math.min(this.left.height(), this.right.height()));
 
@@ -63,25 +63,24 @@ public class HorizontalCompositionCenter implements AsciiBlock {
       // Outside of normal bounds
       throw new Exception("Invalid row " + i);
     }
-    
+
     String left;
     if (i >= leftSpace && i < leftSpace + this.left.height()) {
-       left = this.left.row(i - leftSpace);
+      left = this.left.row(i - leftSpace);
     } else {
       left = " ".repeat(this.left.width());
     }
 
     String right;
     if (i >= rightSpace && i < rightSpace + this.right.height()) {
-       right = this.right.row(i - rightSpace);
+      right = this.right.row(i - rightSpace);
     } else {
       right = " ".repeat(this.right.width());
     }
 
 
-   return left + right;
+    return left + right;
   }
-
 
 
 
@@ -107,17 +106,15 @@ public class HorizontalCompositionCenter implements AsciiBlock {
   /**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    if(!(other instanceof HorizontalCompositionCenter)) {
+    if (!(other instanceof HorizontalCompositionCenter)) {
       return false;
     }
-    HorizontalCompositionCenter otherCenter = (HorizontalCompositionCenter) other; 
+    HorizontalCompositionCenter otherCenter = (HorizontalCompositionCenter) other;
     return this.left.eqv(otherCenter.left) && this.right.eqv(otherCenter.right);
   } // eqv(AsciiBlock)
 

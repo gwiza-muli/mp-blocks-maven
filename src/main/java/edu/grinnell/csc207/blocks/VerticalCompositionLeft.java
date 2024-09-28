@@ -27,11 +27,9 @@ public class VerticalCompositionLeft implements AsciiBlock {
   /**
    * Build a Horizontal Composition.
    *
-   * @param aboveBlock
-   *   The top block.
+   * @param aboveBlock The top block.
    *
-   * @param belowBlock
-   *   The bottom block.
+   * @param belowBlock The bottom block.
    */
   public VerticalCompositionLeft(AsciiBlock aboveBlock, AsciiBlock belowBlock) {
     this.above = aboveBlock;
@@ -49,8 +47,7 @@ public class VerticalCompositionLeft implements AsciiBlock {
    *
    * @return row i.
    *
-   * @exception Exception
-   *   if i is outside the range of valid rows.
+   * @exception Exception if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
     if ((i < 0) || (i >= this.height())) {
@@ -85,10 +82,10 @@ public class VerticalCompositionLeft implements AsciiBlock {
   } // width()
 
   public boolean eqv(AsciiBlock other) {
-    if(!(other instanceof VerticalCompositionLeft)) {
+    if (!(other instanceof VerticalCompositionLeft)) {
       return false;
     }
-    VerticalCompositionLeft otherCenter = (VerticalCompositionLeft) other; 
+    VerticalCompositionLeft otherCenter = (VerticalCompositionLeft) other;
     return this.above.eqv(otherCenter.above) && this.above.eqv(otherCenter.above);
   }
 } // class VerticalCompositionLeft

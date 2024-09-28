@@ -46,11 +46,11 @@ public class VerticalCompositionCenter implements AsciiBlock {
    * @exception Exception if i is outside the range of valid rows.
    */
 
-   public String row (int i) throws Exception{
+  public String row(int i) throws Exception {
     if ((i < 0) || (i >= this.height())) {
       // Outside of normal bounds
       throw new Exception("Invalid row " + i);
-    } else if (i < this.above.height()){
+    } else if (i < this.above.height()) {
       String aboveRow = this.above.row(i);
       int offset = this.width() - this.above.width();
       int leftSpace = offset / 2;
@@ -64,26 +64,26 @@ public class VerticalCompositionCenter implements AsciiBlock {
       int leftSpace = offset / 2;
       int rightSpace = offset - leftSpace;
       return " ".repeat(leftSpace) + belowRow + " ".repeat(rightSpace);
-    
+
     }
-   }
- 
-  
+  }
+
+
   public int height() {
     return this.above.height() + this.below.height();
   }
- 
+
 
   public int width() {
     return Math.max(this.above.width(), this.below.width());
   }
- 
+
 
   public boolean eqv(AsciiBlock other) {
-    if(!(other instanceof HorizontalCompositionCenter)) {
+    if (!(other instanceof HorizontalCompositionCenter)) {
       return false;
     }
-    VerticalCompositionCenter otherCenter = (VerticalCompositionCenter) other; 
+    VerticalCompositionCenter otherCenter = (VerticalCompositionCenter) other;
     return this.above.eqv(otherCenter.above) && this.below.eqv(otherCenter.below);
   } // eqv(AsciiBlock)
 
