@@ -85,8 +85,8 @@ public class HComp implements AsciiBlock {
         accumulator = new HorizontalCompositionTop(accumulator, this.blocks[x]);
       } else if (this.align == VAlignment.CENTER) {
         accumulator = new HorizontalCompositionCenter(accumulator, this.blocks[x]);
-      // } else if (this.align == VAlignment.BOTTOM) {
-      //   accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
+      } else if (this.align == VAlignment.BOTTOM) {
+        accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
       } 
     }
     
