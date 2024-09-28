@@ -22,7 +22,7 @@ public class VComp implements AsciiBlock {
   /**
    * How the blocks are aligned.
    */
-  HAlignment align;
+  VAlignment align;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -38,11 +38,11 @@ public class VComp implements AsciiBlock {
    * @param bottomBlock
    *   The block on the bottom.
    */
-  public VComp(HAlignment alignment, AsciiBlock topBlock,
+  public VComp(VAlignment alignment, AsciiBlock topBlock,
       AsciiBlock bottomBlock) {
     this.align = alignment;
     this.blocks = new AsciiBlock[] {topBlock, bottomBlock};
-  } // VComp(HAlignment, AsciiBlock, AsciiBlock)
+  } // VComp(VAlignment, AsciiBlock, AsciiBlock)
 
   /**
    * Build a vertical composition of multiple blocks.
@@ -52,10 +52,10 @@ public class VComp implements AsciiBlock {
    * @param blocksToCompose
    *   The blocks we will be composing.
    */
-  public VComp(HAlignment alignment, AsciiBlock[] blocksToCompose) {
+  public VComp(VAlignment alignment, AsciiBlock[] blocksToCompose) {
     this.align = alignment;
     this.blocks = Arrays.copyOf(blocksToCompose, blocksToCompose.length);
-  } // VComp(HAlignment, AsciiBLOCK[])
+  } // VComp(VAlignment, AsciiBLOCK[])
   public AsciiBlock reduce() {
     AsciiBlock accumulator;
       if (this.align == VAlignment.TOP) {
@@ -72,9 +72,9 @@ public class VComp implements AsciiBlock {
       for (int x = 2; x < this.blocks.length; x++) {
         if (this.align == HAlignment.LEFT) {
           accumulator = new HorizontalCompositionTop(accumulator, this.blocks[x]);
-        } else if (this.align == HAlignment.CENTER) {
+        } else if (this.align == VAlignment.CENTER) {
           accumulator = new HorizontalCompositionCenter(accumulator, this.blocks[x]);
-        } else if (this.align == HAlignment.RIGHT) {
+        } else if (this.align == VAlignment.RIGHT) {
           accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
         } else {
           throw new IllegalArgumentException("Invalid alignment");
