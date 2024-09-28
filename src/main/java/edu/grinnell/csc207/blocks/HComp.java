@@ -141,6 +141,7 @@ public class HComp implements AsciiBlock {
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false; // STUB
+    //return this.result.eqv(other);
+    return false; // STUB // NOT IMPLEMENTED_--------------------------
   } // eqv(AsciiBlock)
 } // class HComp

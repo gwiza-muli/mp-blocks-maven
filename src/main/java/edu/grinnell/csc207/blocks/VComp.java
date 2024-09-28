@@ -22,7 +22,10 @@ public class VComp implements AsciiBlock {
   /**
    * How the blocks are aligned.
    */
-  VAlignment align;
+  HAlignment align;
+
+  /** the resulting H composition. */
+    AsciiBlock result;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
@@ -38,10 +41,11 @@ public class VComp implements AsciiBlock {
    * @param bottomBlock
    *   The block on the bottom.
    */
-  public VComp(VAlignment alignment, AsciiBlock topBlock,
+  public VComp(HAlignment alignment, AsciiBlock topBlock,
       AsciiBlock bottomBlock) {
     this.align = alignment;
     this.blocks = new AsciiBlock[] {topBlock, bottomBlock};
+    this.result = reduce();
   } // VComp(VAlignment, AsciiBlock, AsciiBlock)
 
   /**
@@ -52,29 +56,30 @@ public class VComp implements AsciiBlock {
    * @param blocksToCompose
    *   The blocks we will be composing.
    */
-  public VComp(VAlignment alignment, AsciiBlock[] blocksToCompose) {
+  public VComp(HAlignment alignment, AsciiBlock[] blocksToCompose) {
     this.align = alignment;
     this.blocks = Arrays.copyOf(blocksToCompose, blocksToCompose.length);
+    this.result = reduce();
   } // VComp(VAlignment, AsciiBLOCK[])
+
   public AsciiBlock reduce() {
     AsciiBlock accumulator;
-      if (this.align == VAlignment.TOP) {
-        accumulator = new HorizontalCompositionTop(this.blocks[0], this.blocks[1]);
-      } else if (this.align == VAlignment.CENTER) {
-        accumulator = new HorizontalCompositionCenter(this.blocks[0], this.blocks[1]);
-      } else if (this.align == VAlignment.BOTTOM) {
-        accumulator = new HorizontalCompositionBottom(this.blocks[0], this.blocks[1]);
+      if (this.align == HAlignment.LEFT) {
+        accumulator = new VerticalCompositionLeft(this.blocks[0], this.blocks[1]);
+      } else if (this.align == HAlignment.CENTER) {
+        accumulator = new VerticalCompositionCenter(this.blocks[0], this.blocks[1]);
+      } else if (this.align == HAlignment.RIGHT) {
+        accumulator = new VerticalCompositionRight(this.blocks[0], this.blocks[1]);
       } else {
         throw new IllegalArgumentException("Invalid alignment");
       }
 
-
       for (int x = 2; x < this.blocks.length; x++) {
         if (this.align == HAlignment.LEFT) {
           accumulator = new HorizontalCompositionTop(accumulator, this.blocks[x]);
-        } else if (this.align == VAlignment.CENTER) {
+        } else if (this.align == HAlignment.CENTER) {
           accumulator = new HorizontalCompositionCenter(accumulator, this.blocks[x]);
-        } else if (this.align == VAlignment.RIGHT) {
+        } else if (this.align == HAlignment.RIGHT) {
           accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
         } else {
           throw new IllegalArgumentException("Invalid alignment");
@@ -101,7 +106,7 @@ public class VComp implements AsciiBlock {
    *   if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
-    return "";  // STUB
+   return this.result.row(i);  // STUB
   } // row(int)
 
   /**
@@ -110,7 +115,7 @@ public class VComp implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    return this.result.height(); // STUB
   } // height()
 
   /**
@@ -119,7 +124,7 @@ public class VComp implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    return this.result.width();   // STUB
   } // width()
 
   /**
@@ -132,6 +137,7 @@ public class VComp implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+   return false;
+    //return this.result.eqv(other);      // STUB \\ MNtjsdfSDKLfjsdafbvgvgggggggggggggggggggggggggggggg
   } // eqv(AsciiBlock)
 } // class VComp
