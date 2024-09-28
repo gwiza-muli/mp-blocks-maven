@@ -115,13 +115,4 @@ public class Grid implements AsciiBlock {
         && (AsciiBlock.eqv(this.element, other.element));
   } // eqv(Grid)
 
-  public void main(){
-    AsciiBlock gridLine = new Grid(new Line("Hello"), 3, 4);
-    try {
-      System.out.println(gridLine.row(0));
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-  }
 } // class Grid

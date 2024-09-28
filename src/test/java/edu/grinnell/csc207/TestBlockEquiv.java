@@ -1056,6 +1056,10 @@ public class TestBlockEquiv {
       AsciiBlock[] blocksTwo, String typeTwo) {
     for (int i = 0; i < blocksOne.length; i++) {
       for (int j = 0; j < blocksTwo.length; j++) {
+
+        System.out.println(blocksOne[i]);
+        System.out.println(blocksTwo[j]);
+
         assertTrue(AsciiBlock.equal(blocksOne[i], blocksTwo[j]),
           String.format("*: equal(exes%s%da, exes%s%da)",
               typeOne, i, typeTwo, j));

@@ -31,11 +31,9 @@ public class Surrounded implements AsciiBlock {
   /**
    * Build a new block with the specified contents.
    *
-   * @param blockContents
-   *   The contents of the block.
+   * @param blockContents The contents of the block.
    *
-   * @param theChar
-   *   The character that we use to surround the block.
+   * @param theChar The character that we use to surround the block.
    */
   public Surrounded(AsciiBlock blockContents, char theChar) {
     this.contents = blockContents;
@@ -53,17 +51,18 @@ public class Surrounded implements AsciiBlock {
    *
    * @return row i.
    *
-   * @exception Exception
-   *   If the row is invalid.
+   * @exception Exception If the row is invalid.
    */
   public String row(int i) throws Exception {
     int h = this.contents.height();
     if (i == 0) {
       // The top of the box
-      return this.surroundChar + this.surroundChar.repeat(this.contents.width()) + this.surroundChar;
+      return this.surroundChar + this.surroundChar.repeat(this.contents.width())
+          + this.surroundChar;
     } else if (i == h + 1) {
       // The bottom of the box
-      return this.surroundChar + this.surroundChar.repeat(this.contents.width()) + this.surroundChar;
+      return this.surroundChar + this.surroundChar.repeat(this.contents.width())
+          + this.surroundChar;
     } else if ((i > 0) && (i <= h)) {
       // Stuff within the box
       return this.surroundChar + this.contents.row(i - 1) + this.surroundChar;
@@ -78,7 +77,7 @@ public class Surrounded implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 2 + this.contents.height();   // STUB
+    return 2 + this.contents.height(); // STUB
   } // height()
 
   /**
@@ -87,43 +86,37 @@ public class Surrounded implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 2 + this.contents.width();   // STUB
+    return 2 + this.contents.width(); // STUB
   } // width()
- 
+
 
   /**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
     int h = this.contents.height();
     int h2 = other.height();
     int h3;
-    if (this.contents.height() > other.height()){
+    if (this.contents.height() > other.height()) {
       h3 = this.contents.height();
-    }
-    else {
+    } else {
       h3 = other.height();
     }
 
-    for(int i = 0; i < h3; i++) {
+    for (int i = 0; i < h3; i++) {
       try {
-        if (! (this.contents.row(i).equals(other.row(i)))){
+        if (!(this.contents.row(i).equals(other.row(i)))) {
           return false;
         }
       } catch (Exception e) {
         return false;
-      } //try-catch
-    } //for
+      } // try-catch
+    } // for
 
-
-
-
-    return true;       
+    return true;
   } // eqv(AsciiBlock)
 } // class Surrounded

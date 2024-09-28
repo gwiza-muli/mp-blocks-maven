@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.blocks;
 
+import java.util.Arrays;
+
 /**
  * A horizontally flipped ASCII block.
  *
@@ -45,7 +47,11 @@ public class HFlip implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-    throw new Exception("Not yet implemented"); // STUB
+    String reverse = "";
+    for (int x = 0; x < this.block.width(); x++){
+      reverse += this.block.row(i).charAt(this.block.width() - x - 1);
+    }
+    return reverse;
   } // row(int)
 
   /**
@@ -54,7 +60,7 @@ public class HFlip implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    return this.block.height();  // STUB
   } // height()
 
   /**
@@ -63,10 +69,10 @@ public class HFlip implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 0;   // STUB
+    return this.block.width();   // STUB
   } // width()
 
-  /**
+     /**
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other
@@ -76,6 +82,20 @@ public class HFlip implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return ((other instanceof HFlip) && (this.eqv((HFlip) other)));
   } // eqv(AsciiBlock)
+
+
+  /**
+   * Determine if this HFlip is structurally equivalent to another.
+   *
+   * @param other The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and false otherwise.
+   */
+   
+  public boolean eqv(HFlip other) {
+    return (this.width() == other.width()) && (this.height() == other.height())
+        && (this.block.eqv(other)) ;
+  } // eqv(HComp)
 } // class HFlip

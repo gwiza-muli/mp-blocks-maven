@@ -1,12 +1,15 @@
 package edu.grinnell.csc207.blocks;
 
+
+import java.util.Arrays;
+
 /**
- * A vertically flipped ASCII block.
+ * A horizontally flipped ASCII block.
  *
  * @author Samuel A. Rebelsky
  * @author Your Name Here
  */
-public class VFlip implements AsciiBlock {
+public class DiagonalFlip implements AsciiBlock {
   // +--------+------------------------------------------------------------
   // | Fields |
   // +--------+
@@ -16,6 +19,11 @@ public class VFlip implements AsciiBlock {
    */
   AsciiBlock block;
 
+    /**
+   * A diagonal line.
+   */
+  AsciiBlock diagonalBlock;
+  
   // +--------------+------------------------------------------------------
   // | Constructors |
   // +--------------+
@@ -26,13 +34,28 @@ public class VFlip implements AsciiBlock {
    * @param original
    *   The original block.
    */
-  public VFlip(AsciiBlock original) {
+  public DiagonalFlip(AsciiBlock original) {
     this.block = original;
-  } // VFlip(AsciiBlock)
+  } // HFlip(AsciiBlock)
 
   // +---------+-----------------------------------------------------------
   // | Methods |
   // +---------+
+
+    /**
+   * Get one row from the block.
+   *
+   * @param i the number of the row
+   *
+   * @return row i.
+   *
+   * @exception Exception
+   *   If the row is invalid.
+   */
+  public AsciiBlock reduce() throws Exception {
+   return new VFlip( new HFlip(this.block));
+   } // row(int)
+
 
   /**
    * Get one row from the block.
@@ -45,11 +68,9 @@ public class VFlip implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-
-     return this.block.row(this.block.height() - i - 1);
-    
+    return this.diagonalBlock.row(i);
   
- 
+
   } // row(int)
 
   /**
@@ -58,7 +79,7 @@ public class VFlip implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return this.block.height();  
+    return this.block.height();  // STUB
   } // height()
 
   /**
@@ -67,10 +88,9 @@ public class VFlip implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return this.block.width(); 
+    return this.block.width();   // STUB
   } // width()
 
-  
      /**
    * Determine if another block is structurally equivalent to this block.
    *
@@ -81,7 +101,7 @@ public class VFlip implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return ((other instanceof VFlip) && (this.eqv((VFlip) other)));
+    return ((other instanceof HFlip) && (this.eqv((HFlip) other)));
   } // eqv(AsciiBlock)
 
 
@@ -93,8 +113,8 @@ public class VFlip implements AsciiBlock {
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
    
-  public boolean eqv(VFlip other) {
+  public boolean eqv(DiagonalFlip other) {
     return (this.width() == other.width()) && (this.height() == other.height())
         && (this.block.eqv(other)) ;
-  } // eqv(Hflip)
-} // class VFlip
+  } // eqv(HComp)
+} // class HFlip
