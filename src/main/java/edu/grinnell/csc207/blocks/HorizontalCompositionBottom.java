@@ -58,14 +58,14 @@ public class HorizontalCompositionBottom implements AsciiBlock {
     } else if ((i >= this.height() - this.left.height())
         && (i >= this.height() - this.right.height())) {
       // Inside both left and right bounds
-      return this.left.row(i - this.height() - this.left.height())
-          + this.right.row(i - this.height() - this.right.height());
+      return this.left.row(i - (this.height() - this.left.height()))
+          + this.right.row(i - (this.height() - this.right.height()));
     } else if (i >= this.height() - this.right.height()) {
       // Inside right bounds, outside left bounds
-      return this.left.row(i - this.height() - this.left.height()) + " ".repeat(this.right.width());
+      return this.left.row(i - (this.height() - this.left.height())) + " ".repeat(this.right.width());
     } else if (i >= this.height() - this.left.height()) {
       return " ".repeat(this.left.width())
-          + this.right.row(i - this.height() - this.right.height());
+          + this.right.row(i - (this.height() - this.right.height()));
     } else {
       return " ".repeat(this.width());
     }

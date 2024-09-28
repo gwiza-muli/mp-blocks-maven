@@ -68,7 +68,7 @@ public class HorizontalCompositionCenter implements AsciiBlock {
     if (i >= leftSpace && i < leftSpace + this.left.height()) {
        left = this.left.row(i - leftSpace);
     } else {
-      left = " ".repeat(this.right.width());
+      left = " ".repeat(this.left.width());
     }
 
     String right;
