@@ -98,7 +98,11 @@ public class HorizontalCompositionBottom implements AsciiBlock {
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return ((other instanceof Grid) && (this.eqv((Grid) other)));
+    if(!(other instanceof HorizontalCompositionBottom)) {
+      return false;
+    }
+    HorizontalCompositionBottom otherCenter = (HorizontalCompositionBottom) other; 
+    return this.left.eqv(otherCenter.left) && this.right.eqv(otherCenter.right);
   } // eqv(AsciiBlock)
 
 } // class HorizontalCompositionTop

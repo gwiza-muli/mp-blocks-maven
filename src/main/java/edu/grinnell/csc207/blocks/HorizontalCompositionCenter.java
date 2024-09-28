@@ -51,28 +51,64 @@ public class HorizontalCompositionCenter implements AsciiBlock {
    *
    * @exception Exception if i is outside the range of valid rows.
    */
-  public String row(int i) throws Exception {
+
+   public String row(int i) throws Exception {
     int height = Math.max(this.left.height(), this.right.height());
-    int leftSpace = height - this.left.height();
-    int rightSpace = height - this.right.height();
+
+    int leftSpace = (height - this.left.height() ) / 2;
+    int rightSpace = (height - this.right.height()) / 2;
     int spaces = (height - Math.min(this.left.height(), this.right.height()));
 
     if ((i < 0) || (i >= this.height())) {
       // Outside of normal bounds
       throw new Exception("Invalid row " + i);
     }
-    if (i >= spaces && i < spaces + leftSpace && i >= spaces && i < spaces + rightSpace) {
-      return this.left.row(i - spaces) + this.right.row(i - spaces);
-    }
-    else if (i >= spaces && i < spaces + leftSpace){
-      return this.left.row(i - spaces) + " ".repeat(this.right.width());
-    }
-    else if (i >= spaces && i < spaces + rightSpace){
-      return " ".repeat(this.left.width()) + this.right.row(i - spaces);
+    
+    String left;
+    if (i >= leftSpace && i < leftSpace + this.left.height()) {
+       left = this.left.row(i - leftSpace);
     } else {
-      return " ".repeat(this.width());
+      left = " ".repeat(this.right.width());
     }
+
+    String right;
+    if (i >= rightSpace && i < rightSpace + this.right.height()) {
+       right = this.right.row(i - rightSpace);
+    } else {
+      right = " ".repeat(this.right.width());
+    }
+
+
+   return left + right;
   }
+
+
+
+
+
+
+  // public String row(int i) throws Exception {
+  //   int height = Math.max(this.left.height(), this.right.height());
+  //   int leftSpace = height - this.left.height();
+  //   int rightSpace = height - this.right.height();
+  //   int spaces = (height - Math.min(this.left.height(), this.right.height()));
+
+  //   if ((i < 0) || (i >= this.height())) {
+  //     // Outside of normal bounds
+  //     throw new Exception("Invalid row " + i);
+  //   }
+  //   if (i >= spaces && i < spaces + leftSpace && i >= spaces && i < spaces + rightSpace) {
+  //     return this.left.row(i - spaces) + this.right.row(i - spaces);
+  //   }
+  //   else if (i >= spaces && i < spaces + leftSpace){
+  //     return this.left.row(i - spaces) + " ".repeat(this.right.width());
+  //   }
+  //   else if (i >= spaces && i < spaces + rightSpace){
+  //     return " ".repeat(this.left.width()) + this.right.row(i - spaces);
+  //   } else {
+  //     return " ".repeat(this.width());
+  //   }
+  // }
 
   /**
    * Determine how many rows are in the block.
@@ -103,7 +139,11 @@ public class HorizontalCompositionCenter implements AsciiBlock {
    *    false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return ((other instanceof Grid) && (this.eqv((Grid) other)));
+    if(!(other instanceof HorizontalCompositionCenter)) {
+      return false;
+    }
+    HorizontalCompositionCenter otherCenter = (HorizontalCompositionCenter) other; 
+    return this.left.eqv(otherCenter.left) && this.right.eqv(otherCenter.right);
   } // eqv(AsciiBlock)
 
 } // class HorizontalCompositionTop

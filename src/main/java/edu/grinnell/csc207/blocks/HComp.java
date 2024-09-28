@@ -39,6 +39,7 @@ public class HComp implements AsciiBlock {
   public HComp(VAlignment alignment, AsciiBlock leftBlock, AsciiBlock rightBlock) {
     this.align = alignment;
     this.blocks = new AsciiBlock[] {leftBlock, rightBlock};
+    this.result = reduce();
   } // HComp(VAlignment, AsciiBlock, AsciiBlock)
 
   /**
@@ -60,7 +61,7 @@ public class HComp implements AsciiBlock {
   // | Methods |
   // +---------+
 
-   /**
+  /**
    * Get one row from the block.
    *
    * @param i the number of the row
@@ -77,23 +78,26 @@ public class HComp implements AsciiBlock {
       accumulator = new HorizontalCompositionCenter(this.blocks[0], this.blocks[1]);
     } else if (this.align == VAlignment.BOTTOM) {
       accumulator = new HorizontalCompositionBottom(this.blocks[0], this.blocks[1]);
-    } 
-    
-    
-    for(int x = 2; x < this.blocks.length; x++){
+    } else {
+      throw new IllegalArgumentException("Invalid alignment");
+    }
+
+
+    for (int x = 2; x < this.blocks.length; x++) {
       if (this.align == VAlignment.TOP) {
         accumulator = new HorizontalCompositionTop(accumulator, this.blocks[x]);
       } else if (this.align == VAlignment.CENTER) {
         accumulator = new HorizontalCompositionCenter(accumulator, this.blocks[x]);
       } else if (this.align == VAlignment.BOTTOM) {
         accumulator = new HorizontalCompositionBottom(accumulator, this.blocks[x]);
-      } 
+      } else {
+        throw new IllegalArgumentException("Invalid alignment");
+      }
     }
-    
+
     return accumulator;
   }
- // row(int)
-
+  // row(int)
 
 
 
@@ -116,7 +120,7 @@ public class HComp implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-  return this.result.height();
+    return this.result.height();
   } // height()
 
   /**
@@ -127,7 +131,7 @@ public class HComp implements AsciiBlock {
   public int width() {
     return this.result.width();
   } // width()
-   
+
 
   /**
    * Determine if another block is structurally equivalent to this block.
