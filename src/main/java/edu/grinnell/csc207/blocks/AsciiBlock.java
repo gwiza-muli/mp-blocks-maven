@@ -52,7 +52,11 @@ public interface AsciiBlock {
    * @return true if they are structurally equivalent and false otherwise.
    */
   public static boolean eqv(AsciiBlock block1, AsciiBlock block2) {
-    return ((block1.getClass() == block2.getClass()) && equal(block1, block2));
+    return ((block1.getClass() == block2.getClass()) && equal(block1, block2) 
+            && (block1.width() == block2.width()) 
+            && (block1.height() == block2.height()))
+            && ((block2 instanceof AsciiBlock) && (block1.eqv((AsciiBlock) block2))
+            && (block1 instanceof AsciiBlock));
   } // eqv(AsciiBlock, AsciiBlock)
 
   /**
