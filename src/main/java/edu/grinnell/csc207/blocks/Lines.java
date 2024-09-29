@@ -108,7 +108,7 @@ public class Lines implements AsciiBlock {
 
 
   /**
-   * Determine if this HFlip is structurally equivalent to another.
+   * Determine if this Lines is structurally equivalent to another.
    *
    * @param other The block to compare to this block.
    *

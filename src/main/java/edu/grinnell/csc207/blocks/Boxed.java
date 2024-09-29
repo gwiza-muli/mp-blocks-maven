@@ -91,29 +91,30 @@ public class Boxed implements AsciiBlock {
     return 2 + this.contents.width();
   } // width()
 
-  /**
+
+
+/**
    * Determine if another block is structurally equivalent to this block.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *    false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return false;       // STUB
+    return ((other instanceof Boxed) && (this.eqv((Boxed) other)));
   } // eqv(AsciiBlock)
 
+
   /**
-   * Determine if another Boxed is structurally equivalent to this block.
+   * Determine if this Rect is structurally equivalent to another.
    *
-   * @param other
-   *   The block to compare to this block.
+   * @param other The block to compare to this block.
    *
-   * @return true if the two blocks are structurally equivalent and
-   *     false otherwise.
+   * @return true if the two blocks are structurally equivalent and false otherwise.
    */
+
   public boolean eqv(Boxed other) {
-    return this.contents.eqv(other.contents);
-  } // eqv(Boxed)
+    return (this.width() == other.width()) && (this.height() == other.height());
+        
+  } // eqv(Hflip)
 } // class Boxed

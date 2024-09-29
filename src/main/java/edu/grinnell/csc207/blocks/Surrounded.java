@@ -89,8 +89,7 @@ public class Surrounded implements AsciiBlock {
     return 2 + this.contents.width(); // STUB
   } // width()
 
-
-  /**
+   /**
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other The block to compare to this block.
@@ -98,25 +97,65 @@ public class Surrounded implements AsciiBlock {
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    int h = this.contents.height();
-    int h2 = other.height();
-    int h3;
-    if (this.contents.height() > other.height()) {
-      h3 = this.contents.height();
-    } else {
-      h3 = other.height();
-    }
-
-    for (int i = 0; i < h3; i++) {
-      try {
-        if (!(this.contents.row(i).equals(other.row(i)))) {
-          return false;
-        }
-      } catch (Exception e) {
-        return false;
-      } // try-catch
-    } // for
-
-    return true;
+    return ((other instanceof Surrounded) && (this.eqv((Surrounded) other)));
   } // eqv(AsciiBlock)
+
+
+  /**
+   * Determine if this Surrounded is structurally equivalent to another.
+   *
+   * @param other The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and false otherwise.
+   */
+
+  public boolean eqv(Surrounded other) {
+    return (this.width() == other.width()) && (this.height() == other.height())
+        && (this.surroundChar.equals(other.surroundChar));
+  } // eqv(HComp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // /**
+  //  * Determine if another block is structurally equivalent to this block.
+  //  *
+  //  * @param other The block to compare to this block.
+  //  *
+  //  * @return true if the two blocks are structurally equivalent and false otherwise.
+  //  */
+  // public boolean eqv(AsciiBlock other) {
+  //   int h = this.contents.height();
+  //   int h2 = other.height();
+  //   int h3;
+  //   if (this.contents.height() > other.height()) {
+  //     h3 = this.contents.height();
+  //   } else {
+  //     h3 = other.height();
+  //   }
+
+  //   for (int i = 0; i < h3; i++) {
+  //     try {
+  //       if (!(this.contents.row(i).equals(other.row(i)))) {
+  //         return false;
+  //       }
+  //     } catch (Exception e) {
+  //       return false;
+  //     } // try-catch
+  //   } // for
+
+  //   return true;
+  // } // eqv(AsciiBlock)
 } // class Surrounded
