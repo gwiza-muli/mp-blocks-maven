@@ -94,3 +94,4 @@ public class VFlip implements AsciiBlock {
         && (this.block.eqv(other));
   } // eqv(Hflip)
 } // class VFlip
+
