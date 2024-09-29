@@ -12,7 +12,7 @@ public class Empty implements AsciiBlock {
   /**
    * Build an empty block.
    */
-  public Empty(){}// Empty(String)
+  public Empty() { } // Empty(String)
 
   // +---------+-----------------------------------------------------------
   // | Methods |

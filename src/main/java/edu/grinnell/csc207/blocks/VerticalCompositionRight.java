@@ -1,5 +1,10 @@
 package edu.grinnell.csc207.blocks;
 
+/**
+ * The right-aligned vertical composition of two blocks.
+ *
+ * @author Mitch and Sheilla
+ */
 public class VerticalCompositionRight implements AsciiBlock {
 
   // +--------+------------------------------------------------------------
@@ -78,12 +83,18 @@ public class VerticalCompositionRight implements AsciiBlock {
     return Math.max(this.above.width(), this.below.width());
   } // width()
 
-  @Override
+  /**
+   * Determine if this VerticalCompositionRight is structurally equivalent to another.
+   *
+   * @param other The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and false otherwise.
+   */
   public boolean eqv(AsciiBlock other) {
     if (!(other instanceof VerticalCompositionLeft)) {
       return false;
-    }
+    } // if statement
     VerticalCompositionRight otherCenter = (VerticalCompositionRight) other;
     return this.above.eqv(otherCenter.above) && this.above.eqv(otherCenter.above);
-  }
+  } // boolean eqv
 } // class VerticalCompositionLeft

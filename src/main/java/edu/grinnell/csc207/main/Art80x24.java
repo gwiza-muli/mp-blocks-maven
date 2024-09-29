@@ -33,15 +33,15 @@ public class Art80x24 {
     int blockWidth = 10;
     int blockHeight = 4;
 
-    AsciiBlock H = new Rect('H', blockWidth, blockHeight);
-    AsciiBlock E = new Rect('E', blockWidth, blockHeight);
-    AsciiBlock L = new Rect('L', blockWidth, blockHeight);
-    AsciiBlock P = new Rect('P', blockWidth, blockHeight);
-    AsciiBlock M = new Rect('M', blockWidth, blockHeight);
+    AsciiBlock blockH = new Rect('H', blockWidth, blockHeight);
+    AsciiBlock blockE = new Rect('E', blockWidth, blockHeight);
+    AsciiBlock blockL = new Rect('L', blockWidth, blockHeight);
+    AsciiBlock blockP = new Rect('P', blockWidth, blockHeight);
+    AsciiBlock blockM = new Rect('M', blockWidth, blockHeight);
 
-    AsciiBlock[] helpBlocks = {H, E, L, P};
+    AsciiBlock[] helpBlocks = {blockH, blockE, blockL, blockP};
 
-    AsciiBlock[] meheBlocks = {M, E, H, E};
+    AsciiBlock[] meheBlocks = {blockM, blockE, blockH, blockE};
 
     AsciiBlock line1Segment = new HComp(VAlignment.TOP, helpBlocks);
 

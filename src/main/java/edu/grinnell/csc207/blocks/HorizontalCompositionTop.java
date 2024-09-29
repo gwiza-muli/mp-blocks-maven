@@ -95,7 +95,7 @@ public class HorizontalCompositionTop implements AsciiBlock {
   public boolean eqv(AsciiBlock other) {
     if (!(other instanceof HorizontalCompositionCenter)) {
       return false;
-    }
+    } // if statment
     HorizontalCompositionTop otherTop = (HorizontalCompositionTop) other;
     return this.left.eqv(otherTop.left) && this.right.eqv(otherTop.right);
   } // eqv(AsciiBlock)

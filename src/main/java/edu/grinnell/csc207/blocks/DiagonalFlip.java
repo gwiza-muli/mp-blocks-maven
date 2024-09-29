@@ -63,8 +63,6 @@ public class DiagonalFlip implements AsciiBlock {
    */
   public String row(int i) throws Exception {
     return this.diagonalBlock.row(i);
-
-
   } // row(int)
 
   /**

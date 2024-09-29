@@ -88,11 +88,8 @@ public class VFlip implements AsciiBlock {
    *
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
-
   public boolean eqv(VFlip other) {
     return AsciiBlock.eqv(this.block, other.block);
-    // return (this.width() == other.width()) && (this.height() == other.height())
-    //     && (this.block.eqv(other));
   } // eqv(Hflip)
 } // class VFlip
 

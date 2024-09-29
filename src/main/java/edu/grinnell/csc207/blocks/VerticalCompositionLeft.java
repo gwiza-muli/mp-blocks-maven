@@ -81,12 +81,19 @@ public class VerticalCompositionLeft implements AsciiBlock {
     return Math.max(this.above.width(), this.below.width());
   } // width()
 
+  /**
+   * Determine if this VerticalCompositionLeft is structurally equivalent to another.
+   *
+   * @param other The block to compare to this block.
+   *
+   * @return true if the two blocks are structurally equivalent and false otherwise.
+   */
   public boolean eqv(AsciiBlock other) {
     if (!(other instanceof VerticalCompositionLeft)) {
       return false;
-    }
+    } // if statement
     VerticalCompositionLeft otherCenter = (VerticalCompositionLeft) other;
     return this.above.eqv(otherCenter.above) && this.above.eqv(otherCenter.above);
-  }
+  } // eqv(AsciiBlock other)
 } // class VerticalCompositionLeft
 

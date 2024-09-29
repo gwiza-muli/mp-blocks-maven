@@ -77,7 +77,7 @@ public class Surrounded implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 2 + this.contents.height(); // STUB
+    return 2 + this.contents.height();
   } // height()
 
   /**
@@ -86,7 +86,7 @@ public class Surrounded implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return 2 + this.contents.width(); // STUB
+    return 2 + this.contents.width();
   } // width()
 
   /**

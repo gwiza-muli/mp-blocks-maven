@@ -1,6 +1,5 @@
 package edu.grinnell.csc207.blocks;
 
-import java.util.Arrays;
 
 /**
  * A horizontally flipped ASCII block.
@@ -48,7 +47,7 @@ public class HFlip implements AsciiBlock {
     String reverse = "";
     for (int x = 0; x < this.block.width(); x++) {
       reverse += this.block.row(i).charAt(this.block.width() - x - 1);
-    }
+    } // for loop
     return reverse;
   } // row(int)
 
@@ -58,7 +57,7 @@ public class HFlip implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return this.block.height(); // STUB
+    return this.block.height();
   } // height()
 
   /**
@@ -67,7 +66,7 @@ public class HFlip implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return this.block.width(); // STUB
+    return this.block.width();
   } // width()
 
   /**

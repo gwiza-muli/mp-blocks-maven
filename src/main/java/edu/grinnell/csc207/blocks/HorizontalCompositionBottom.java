@@ -71,12 +71,12 @@ public class HorizontalCompositionBottom implements AsciiBlock {
         rightRow = this.right.row(rightIndex);
       } else {
         rightRow = " ".repeat(this.right.width());
-      }
+      } // else
       String leftRow = this.left.row(i - (this.height() - this.left.height()));
       return leftRow + rightRow;
     } else {
       return " ".repeat(this.width());
-    }
+    } // else
   } // row(int)
 
   /**
@@ -108,7 +108,7 @@ public class HorizontalCompositionBottom implements AsciiBlock {
   public boolean eqv(AsciiBlock other) {
     if (!(other instanceof HorizontalCompositionBottom)) {
       return false;
-    }
+    } // if statement
     HorizontalCompositionBottom otherCenter = (HorizontalCompositionBottom) other;
     return this.left.eqv(otherCenter.left) && this.right.eqv(otherCenter.right);
   } // eqv(AsciiBlock)

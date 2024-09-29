@@ -62,27 +62,23 @@ public class HorizontalCompositionCenter implements AsciiBlock {
     if ((i < 0) || (i >= this.height())) {
       // Outside of normal bounds
       throw new Exception("Invalid row " + i);
-    }
+    } // if statement
 
     String left;
     if (i >= leftSpace && i < leftSpace + this.left.height()) {
       left = this.left.row(i - leftSpace);
     } else {
       left = " ".repeat(this.left.width());
-    }
+    } // else statement
 
     String right;
     if (i >= rightSpace && i < rightSpace + this.right.height()) {
       right = this.right.row(i - rightSpace);
     } else {
       right = " ".repeat(this.right.width());
-    }
-
-
+    } // else statement
     return left + right;
-  }
-
-
+  } //String row(int i)
 
   /**
    * Determine how many rows are in the block.
@@ -102,7 +98,6 @@ public class HorizontalCompositionCenter implements AsciiBlock {
     return this.left.width() + this.right.width();
   } // width()
 
-
   /**
    * Determine if another block is structurally equivalent to this block.
    *
@@ -113,7 +108,7 @@ public class HorizontalCompositionCenter implements AsciiBlock {
   public boolean eqv(AsciiBlock other) {
     if (!(other instanceof HorizontalCompositionCenter)) {
       return false;
-    }
+    } // if statement
     HorizontalCompositionCenter otherCenter = (HorizontalCompositionCenter) other;
     return this.left.eqv(otherCenter.left) && this.right.eqv(otherCenter.right);
   } // eqv(AsciiBlock)

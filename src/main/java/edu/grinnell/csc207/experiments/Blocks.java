@@ -2,8 +2,6 @@ package edu.grinnell.csc207.experiments;
 
 import edu.grinnell.csc207.blocks.AsciiBlock;
 import edu.grinnell.csc207.blocks.Boxed;
-import edu.grinnell.csc207.blocks.Empty;
-import edu.grinnell.csc207.blocks.Grid;
 import edu.grinnell.csc207.blocks.HAlignment;
 import edu.grinnell.csc207.blocks.HComp;
 import edu.grinnell.csc207.blocks.Line;
@@ -148,5 +146,5 @@ public class Blocks {
         new VComp(HAlignment.RIGHT, new AsciiBlock[] {v1, v7, v11, v19}));
 
     pen.close();
-  }
+  } // main class
 } // class Blocks

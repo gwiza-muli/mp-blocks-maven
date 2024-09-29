@@ -56,19 +56,20 @@ public class VComp implements AsciiBlock {
     this.result = reduce();
   } // VComp(VAlignment, AsciiBLOCK[])
 
+  /**
+   *
+   * The reduce method applies the given composition onto the object.
+   *
+   * @return accumulator
+   */
   public AsciiBlock reduce() {
-
     if (this.blocks.length == 0) {
       return new Empty();
-    }
-
+    } // reduce ()
     AsciiBlock accumulator = this.blocks[0];
-
-
     if (accumulator.height() == 0 && accumulator.width() == 0) {
       accumulator = new Empty();
-    }
-
+    } // if statement
     if (this.blocks.length > 1) {
       if (this.align == HAlignment.LEFT) {
         accumulator = new VerticalCompositionLeft(this.blocks[0], this.blocks[1]);
@@ -78,8 +79,7 @@ public class VComp implements AsciiBlock {
         accumulator = new VerticalCompositionRight(this.blocks[0], this.blocks[1]);
       } else {
         throw new IllegalArgumentException("Invalid alignment");
-      }
-
+      } // else
       for (int x = 2; x < this.blocks.length; x++) {
         if (this.align == HAlignment.LEFT) {
           accumulator = new VerticalCompositionLeft(accumulator, this.blocks[x]);
@@ -89,11 +89,11 @@ public class VComp implements AsciiBlock {
           accumulator = new VerticalCompositionRight(accumulator, this.blocks[x]);
         } else {
           throw new IllegalArgumentException("Invalid alignment");
-        }
-      }
-    }
+        } // else
+      } // for loop
+    } // if statement
     return accumulator;
-  }
+  } // reduce
 
 
   // +---------+-----------------------------------------------------------
@@ -112,7 +112,7 @@ public class VComp implements AsciiBlock {
    * @exception Exception if i is outside the range of valid rows.
    */
   public String row(int i) throws Exception {
-    return this.result.row(i); // STUB
+    return this.result.row(i);
   } // row(int)
 
   /**
@@ -121,7 +121,7 @@ public class VComp implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return this.result.height(); // STUB
+    return this.result.height();
   } // height()
 
   /**
@@ -130,11 +130,8 @@ public class VComp implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return this.result.width(); // STUB
+    return this.result.width();
   } // width()
-
- 
-
 
   /**
    * Determine if another block is structurally equivalent to this block.
@@ -145,7 +142,6 @@ public class VComp implements AsciiBlock {
    */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof VComp) && (this.eqv((VComp) other)));
-    
   } // eqv(AsciiBlock)
 
   /**
@@ -157,25 +153,18 @@ public class VComp implements AsciiBlock {
    */
 
   public boolean eqv(VComp other) {
-    if (this.align != other.align){
+    if (this.align != other.align) {
       return false;
-    }
-
-    if (this.blocks.length != other.blocks.length){
+    } // if statement
+    if (this.blocks.length != other.blocks.length) {
       return false;
-    }
-    for (int i = 0; i < this.blocks.length; i++){
-      if (!AsciiBlock.eqv(this.blocks[i], other.blocks[i])){
+    } // if statement
+    for (int i = 0; i < this.blocks.length; i++) {
+      if (!AsciiBlock.eqv(this.blocks[i], other.blocks[i])) {
         return false;
-      }
-    }
-
-
+      } // if statement
+    } // for loop
     return true;
-
-   
   } // eqv(HComp)
-
-
 } // class VComp
 
