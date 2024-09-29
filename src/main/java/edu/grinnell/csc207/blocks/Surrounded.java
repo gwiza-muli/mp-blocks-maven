@@ -89,7 +89,7 @@ public class Surrounded implements AsciiBlock {
     return 2 + this.contents.width(); // STUB
   } // width()
 
-   /**
+  /**
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other The block to compare to this block.
@@ -102,7 +102,7 @@ public class Surrounded implements AsciiBlock {
 
 
 
-    /**
+  /**
    * Determine if this HFlip is structurally equivalent to another.
    *
    * @param other The block to compare to this block.
@@ -110,13 +110,11 @@ public class Surrounded implements AsciiBlock {
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
 
-   public boolean eqv(Surrounded other) {
+  public boolean eqv(Surrounded other) {
     return (this.width() == other.width()) && (this.height() == other.height())
-        && (this.surroundChar.equals(other.surroundChar))
-        && (this.contents.eqv(other.contents));
+        && (this.surroundChar.equals(other.surroundChar)) && (this.contents.eqv(other.contents));
   } // eqv(HComp)
 
-} //class Surrounded
-
+} // class Surrounded
 
 

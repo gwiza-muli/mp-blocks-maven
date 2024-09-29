@@ -95,7 +95,7 @@ public class Lines implements AsciiBlock {
     return this.width;
   } // width()
 
- /**
+  /**
    * Determine if another block is structurally equivalent to this block.
    *
    * @param other The block to compare to this block.

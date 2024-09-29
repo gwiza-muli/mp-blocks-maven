@@ -1,8 +1,5 @@
 package edu.grinnell.csc207.blocks;
 
-
-import java.util.Arrays;
-
 /**
  * A horizontally flipped ASCII block.
  *
@@ -33,7 +30,7 @@ public class DiagonalFlip implements AsciiBlock {
    *
    * @param original The original block.
    */
-  public DiagonalFlip(AsciiBlock original ) {
+  public DiagonalFlip(AsciiBlock original) {
     this.block = original;
     this.diagonalBlock = reduce();
   } // HFlip(AsciiBlock)
@@ -45,7 +42,6 @@ public class DiagonalFlip implements AsciiBlock {
   /**
    * Get one row from the block.
    *
-   * @param i the number of the row
    *
    * @return row i.
    *
@@ -77,7 +73,7 @@ public class DiagonalFlip implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return this.block.height(); // STUB
+    return this.block.height();
   } // height()
 
   /**
@@ -86,7 +82,7 @@ public class DiagonalFlip implements AsciiBlock {
    * @return the number of columns
    */
   public int width() {
-    return this.block.width(); // STUB
+    return this.block.width();
   } // width()
 
   /**
