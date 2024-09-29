@@ -48,7 +48,7 @@ public class TestNewBlock {
   }
 
   /**
-   * DiagonalFlip of the empty block.
+   * DiagonalFlip of a paragraph
    */
   @Test
   public void testDiagonalParagraph() {
@@ -56,62 +56,71 @@ public class TestNewBlock {
     AsciiBlock line2 = new Line("this is a test.");
     AsciiBlock line3 = new Line("how are you?");
 
-   AsciiBlock paragraph = new VComp(HAlignment.RIGHT,new AsciiBlock[] {line1, line2, line3});
-    
+    AsciiBlock paragraph = new VComp(HAlignment.RIGHT, new AsciiBlock[] {line1, line2, line3});
+
 
     AsciiBlock diagonalParagraph = new DiagonalFlip(paragraph);
     assertEquals(15, diagonalParagraph.width(), "Correct width for a paragraph");
     assertEquals(3, diagonalParagraph.height(), "correct height for a paragraph");
-    assertEquals("?uoy era woh   \n"
-               + ".tset a si siht\n"
-               + "enoyrevE iH    \n", TestUtils.toString(diagonalParagraph), "correct contents for a flipped paragraph.");
-  
+    assertEquals("?uoy era woh   \n" + ".tset a si siht\n" + "enoyrevE iH    \n",
+        TestUtils.toString(diagonalParagraph), "correct contents for a flipped paragraph.");
+
+  }
+
+  /**
+   * DiagonalFlip of the two lines.
+   */
+  @Test
+  public void testTwoLineSwitched() {
+    AsciiBlock line1 = new Line("Grinnell");
+    AsciiBlock line2 = new Line("College");
+
+    AsciiBlock paragraph = new VComp(HAlignment.RIGHT, new AsciiBlock[] {line1, line2});
+
+
+    AsciiBlock diagonalParagraph = new DiagonalFlip(paragraph);
+    assertEquals(8, diagonalParagraph.width(), "Correct width for a paragraph");
+    assertEquals(2, diagonalParagraph.height(), "correct height for a paragraph");
+    assertEquals("egelloC \n" + "llennirG\n", TestUtils.toString(diagonalParagraph),
+        "correct contents for a flipped two lines..");
+
+  }
+
+  /**
+   * DiagonalFlip of two lines that are the same.
+   */
+  @Test
+  public void testTwoLineSame() {
+    AsciiBlock line1 = new Line("Same");
+    AsciiBlock line2 = new Line("Same");
+
+    AsciiBlock paragraph = new VComp(HAlignment.RIGHT, new AsciiBlock[] {line1, line2});
+
+    AsciiBlock diagonalParagraph = new DiagonalFlip(paragraph);
+    assertEquals(4, diagonalParagraph.width(), "Correct width for a paragraph");
+    assertEquals(2, diagonalParagraph.height(), "correct height for a paragraph");
+    assertEquals("emaS\n" + "emaS\n", TestUtils.toString(diagonalParagraph),
+        "correct contents for a flipped two lines..");
+
+  }
+
+  /**
+   * DiagonalFlip of two lines that are the same.
+   */
+  @Test
+  public void testTwoLineSameOneLineNot() {
+    AsciiBlock line1 = new Line("Same");
+    AsciiBlock line2 = new Line("SameNOT");
+
+    AsciiBlock paragraph = new VComp(HAlignment.RIGHT, new AsciiBlock[] {line1, line2});
+
+    AsciiBlock diagonalParagraph = new DiagonalFlip(paragraph);
+    assertEquals(7, diagonalParagraph.width(), "Correct width for a paragraph");
+    assertEquals(2, diagonalParagraph.height(), "correct height for a paragraph");
+    assertEquals("TONemaS\n" + "emaS   \n", TestUtils.toString(diagonalParagraph),
+        "correct contents for a flipped two lines..");
+
+  }
 }
-}
 
-
-
-// @Test
-// public void testHFlipStuff() {
-//   AsciiBlock abcd = 
-//       new VComp(HAlignment.LEFT, new AsciiBlock[] { new Line("alfa"), 
-//           new Line("bravo"), new Line("charlie"), new Line("delta") });
-
-//   AsciiBlock flipped = new HFlip(abcd);
-//   assertEquals(7, flipped.width(),
-//       "M: Correct width for hflipped abcd");
-//   assertEquals(4, flipped.height(),
-//       "M: Correct height for hflipped abcd");
-//   assertEquals("   afla\n  ovarb\neilrahc\n  atled\n",
-//       TestUtils.toString(flipped),
-//       "M: Correct contents for hflipped abcd");
-
-//   AsciiBlock flipflop = new HFlip(flipped);
-//   assertEquals(7, flipflop.width(),
-//       "M: Correct width for doubly hflipped abcd");
-//   assertEquals(4, flipflop.height(),
-//       "M: Correct height for doubly hflipped abcd");
-//   assertEquals("alfa   \nbravo  \ncharlie\ndelta  \n",
-//       TestUtils.toString(flipflop),
-//       "M: Correct contents for doubly hflipped abcd");
-
-//   AsciiBlock mirror = 
-//       new HComp(VAlignment.TOP, new AsciiBlock[] { flipped, abcd });
-//   assertEquals(14, mirror.width(),
-//       "E: Correct width for mirrored text");
-//   assertEquals(4, mirror.height(),
-//       "E: Correct height for mirrored text");
-//   assertEquals(
-//       "   aflaalfa   \n  ovarbbravo  \neilrahccharlie\n  atleddelta  \n",
-//       TestUtils.toString(mirror),
-//       "E: Correct contents for mirrored text");
-  
-//   AsciiBlock rorrim = new HFlip(mirror);
-//   assertEquals(mirror.width(), rorrim.width(),
-//       "E: Correct width for hflipped mirror");
-//   assertEquals(mirror.height(), rorrim.height(),
-//       "E: Correct height for hflipped mirror");
-//   assertEquals(TestUtils.toString(mirror), TestUtils.toString(rorrim),
-//       "E: Correct contents for hflipped mirror");
-// } // testHFlipStuff
 

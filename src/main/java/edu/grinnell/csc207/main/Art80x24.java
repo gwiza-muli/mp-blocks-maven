@@ -25,10 +25,6 @@ public class Art80x24 {
    * @exception Exception If something goes wrong with one of the underlying classes.
    */
   public static void main(String[] args) throws Exception {
-    // PrintWriter pen = new PrintWriter(System.out, true);
-    // AsciiBlock art = new Rect('^', 80, 24);
-    // AsciiBlock.print(pen, art);
-    // pen.close();
 
     int blockWidth = 10;
     int blockHeight = 4;
