@@ -3,8 +3,8 @@ package edu.grinnell.csc207.blocks;
 /**
  * A vertically flipped ASCII block.
  *
- * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Mitch Paiva
+ * @author Shiella Muligande
  */
 public class VFlip implements AsciiBlock {
   // +--------+------------------------------------------------------------

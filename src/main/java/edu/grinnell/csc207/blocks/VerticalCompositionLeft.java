@@ -3,7 +3,8 @@ package edu.grinnell.csc207.blocks;
 /**
  * The left-aligned vertical composition of two blocks.
  *
- * @author Mitch and Sheilla
+ * @author Mitch Paiva
+ * @author Shiella Muligande
  */
 public class VerticalCompositionLeft implements AsciiBlock {
   // +--------+------------------------------------------------------------

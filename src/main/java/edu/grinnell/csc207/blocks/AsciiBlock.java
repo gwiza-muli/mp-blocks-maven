@@ -6,7 +6,9 @@ import java.io.PrintWriter;
  * Blocks of ASCII text.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Mitch Paiva
+ * @author Shiela Muligande
+ *
  */
 public interface AsciiBlock {
   // +----------------+----------------------------------------------

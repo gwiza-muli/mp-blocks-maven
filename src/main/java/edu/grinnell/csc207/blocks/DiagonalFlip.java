@@ -4,7 +4,9 @@ package edu.grinnell.csc207.blocks;
  * A horizontally flipped ASCII block.
  *
  * @author Samuel A. Rebelsky
- * @author Your Name Here
+ * @author Mitch Paiva
+ * @author Shiela Muligande
+ *
  */
 public class DiagonalFlip implements AsciiBlock {
   // +--------+------------------------------------------------------------
@@ -12,7 +14,11 @@ public class DiagonalFlip implements AsciiBlock {
   // +--------+
 
   /**
-   * The original block.
+   * The origin block.
+   *
+   * @author Mitch Paiva
+   *
+   * @author Shiela Muligande
    */
   AsciiBlock block;
 
