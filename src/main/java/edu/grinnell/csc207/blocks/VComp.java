@@ -158,6 +158,7 @@ public class VComp implements AsciiBlock {
    */
   public boolean eqv(AsciiBlock other) {
     return ((other instanceof VComp) && (this.eqv((VComp) other)));
+    
   } // eqv(AsciiBlock)
 
   /**
@@ -169,9 +170,28 @@ public class VComp implements AsciiBlock {
    */
 
   public boolean eqv(VComp other) {
-    return (this.width() == other.width()) && (this.height() == other.height())
-        && (Arrays.equals(this.blocks, other.blocks));
+    if (this.align != other.align){
+      return false;
+    }
+
+    if (this.blocks.length != other.blocks.length){
+      return false;
+    }
+    for (int i = 0; i < this.blocks.length; i++){
+      if (!AsciiBlock.eqv(this.blocks[i], other.blocks[i])){
+        return false;
+      }
+    }
+
+
+    return true;
+
+   
   } // eqv(HComp)
 
 
 } // class VComp
+
+
+// return (this.width() == other.width()) && (this.height() == other.height())
+// && (Arrays.equals(this.blocks, other.blocks));

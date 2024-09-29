@@ -152,7 +152,8 @@ public class HComp implements AsciiBlock {
    * @return true if the two blocks are structurally equivalent and false otherwise.
    */
   public boolean eqv(AsciiBlock other) {
-    return ((other instanceof HComp) && (this.eqv((HComp) other)));
+    //return ((other instanceof HComp) && (this.eqv((HComp) other)));
+    return (other instanceof HComp) && this.eqv((HComp) other);
   } // eqv(AsciiBlock)
 
 
@@ -165,7 +166,27 @@ public class HComp implements AsciiBlock {
    */
 
   public boolean eqv(HComp other) {
-    return (this.width() == other.width()) && (this.height() == other.height())
-        && (Arrays.equals(this.blocks, other.blocks));
+
+  
+    if (this.align != other.align){
+      return false;
+    }
+
+    if (this.blocks.length != other.blocks.length){
+      return false;
+    }
+    for (int i = 0; i < this.blocks.length; i++){
+      if (!AsciiBlock.eqv(this.blocks[i], other.blocks[i])){
+        return false;
+      }
+    }
+
+
+    return true;
+  
   } // eqv(HComp)
 } // class HComp
+
+
+    // return (this.width() == other.width()) && (this.height() == other.height())
+    //     && (Arrays.equals(this.blocks, other.blocks));

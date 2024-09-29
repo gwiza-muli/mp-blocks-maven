@@ -90,8 +90,9 @@ public class VFlip implements AsciiBlock {
    */
 
   public boolean eqv(VFlip other) {
-    return (this.width() == other.width()) && (this.height() == other.height())
-        && (this.block.eqv(other));
+    return AsciiBlock.eqv(this.block, other.block);
+    // return (this.width() == other.width()) && (this.height() == other.height())
+    //     && (this.block.eqv(other));
   } // eqv(Hflip)
 } // class VFlip
 
