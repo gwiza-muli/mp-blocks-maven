@@ -62,8 +62,8 @@ public class HorizontalCompositionBottom implements AsciiBlock {
           + this.right.row(i - (this.height() - this.right.height()));
     } else if (i >= this.height() - this.right.height()) {
       // Inside right bounds, outside left bounds
-      return this.left.row(i - (this.height() - this.left.height()))
-          + " ".repeat(this.right.width());
+      return " ".repeat(this.left.width())
+          + this.right.row(i - (this.height() - this.right.height()));
     } else if (i >= this.height() - this.left.height()) {
       int rightIndex = i - (this.height() - this.right.height());
       String rightRow;

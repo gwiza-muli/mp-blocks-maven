@@ -1,9 +1,12 @@
 package edu.grinnell.csc207.main;
 
 import edu.grinnell.csc207.blocks.AsciiBlock;
-import edu.grinnell.csc207.blocks.Grid;
-import edu.grinnell.csc207.blocks.Line;
+import edu.grinnell.csc207.blocks.HComp;
+import edu.grinnell.csc207.blocks.VComp;
 import edu.grinnell.csc207.blocks.Rect;
+import edu.grinnell.csc207.blocks.VAlignment;
+import edu.grinnell.csc207.blocks.HAlignment;
+
 
 import java.io.PrintWriter;
 
@@ -17,11 +20,9 @@ public class Art80x24 {
   /**
    * Create the artwork.
    *
-   * @param args
-   *   Command-line arguments (currently ignored).
+   * @param args Command-line arguments (currently ignored).
    *
-   * @exception Exception
-   *   If something goes wrong with one of the underlying classes.
+   * @exception Exception If something goes wrong with one of the underlying classes.
    */
   public static void main(String[] args) throws Exception {
     // PrintWriter pen = new PrintWriter(System.out, true);
@@ -29,14 +30,34 @@ public class Art80x24 {
     // AsciiBlock.print(pen, art);
     // pen.close();
 
+    int blockWidth = 10;
+    int blockHeight = 4;
+
+    AsciiBlock H = new Rect('H', blockWidth, blockHeight);
+    AsciiBlock E = new Rect('E', blockWidth, blockHeight);
+    AsciiBlock L = new Rect('L', blockWidth, blockHeight);
+    AsciiBlock P = new Rect('P', blockWidth, blockHeight);
+    AsciiBlock M = new Rect('M', blockWidth, blockHeight);
+
+    AsciiBlock[] helpBlocks = {H, E, L, P};
+
+    AsciiBlock[] meheBlocks = {M, E, H, E};
+
+    AsciiBlock line1Segment = new HComp(VAlignment.TOP, helpBlocks);
+
+    AsciiBlock[] line1Blocks = {line1Segment, line1Segment};
+    AsciiBlock line1 = new HComp(VAlignment.TOP, line1Blocks);
+
+    AsciiBlock line2Segment = new HComp(VAlignment.TOP, meheBlocks);
+
+    AsciiBlock[] line2Blocks = {line2Segment, line2Segment};
+    AsciiBlock line2 = new HComp(VAlignment.TOP, line2Blocks);
+
+    AsciiBlock[] alternatingWord = {line1, line2, line1, line2, line1, line2};
+    AsciiBlock finalArt = new VComp(HAlignment.LEFT, alternatingWord);
 
 
-      AsciiBlock gridLine = new Grid(new Line("Hello"), 3, 4);
-    try {
-      System.out.println(gridLine.row(0));
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    PrintWriter pen = new PrintWriter(System.out, true);
+    AsciiBlock.print(pen, finalArt);
   } // main(String[])
 } // class Art80x24
