@@ -4,6 +4,10 @@ import edu.grinnell.csc207.blocks.AsciiBlock;
 
 /**
  * Utilities for testing.
+ *
+ * @author Sam Rebelsky
+ * @author Mitch Paiva
+ * @author Shiella Muligande
  */
 public class TestUtils {
   // +-----------+---------------------------------------------------

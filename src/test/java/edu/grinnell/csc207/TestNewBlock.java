@@ -15,7 +15,11 @@ import edu.grinnell.csc207.blocks.VComp;
 import edu.grinnell.csc207.blocks.VFlip;
 
 /**
- * Tests of the new block. Specifically Dia
+ * Tests of the new block. Specifically Diagonal.
+ *
+ * @author Sam Rebelsky
+ * @author Mitch Paiva
+ * @author Shiella Muligande
  */
 public class TestNewBlock {
   // +-------+-------------------------------------------------------
