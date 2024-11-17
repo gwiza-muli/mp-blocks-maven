@@ -6,6 +6,8 @@ import java.util.Arrays;
  * Multiple lines of text. The lines are left aligned. Used mostly for testing.
  *
  * @author Samuel A. Rebelsky
+ * @author Mitch Paiva
+ * @author Shiela Muligande
  */
 public class Lines implements AsciiBlock {
   // +--------+------------------------------------------------------------

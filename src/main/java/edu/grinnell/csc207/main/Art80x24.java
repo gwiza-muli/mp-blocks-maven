@@ -13,8 +13,8 @@ import java.io.PrintWriter;
 /**
  * Create and print an amazing 80x24 ASCII artwork.
  *
- * @author Your Name Here
- * @author Your Name Here
+ * @author Mitch Paiva
+ * @author Shiela Muligande
  */
 public class Art80x24 {
   /**

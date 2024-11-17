@@ -66,20 +66,20 @@ public class HorizontalCompositionCenter implements AsciiBlock {
       throw new Exception("Invalid row " + i);
     } // if statement
 
-    String left;
+    String leftOne;
     if (i >= leftSpace && i < leftSpace + this.left.height()) {
-      left = this.left.row(i - leftSpace);
+      leftOne = this.left.row(i - leftSpace);
     } else {
-      left = " ".repeat(this.left.width());
+      leftOne = " ".repeat(this.left.width());
     } // else statement
 
-    String right;
+    String rightOne;
     if (i >= rightSpace && i < rightSpace + this.right.height()) {
-      right = this.right.row(i - rightSpace);
+      rightOne = this.right.row(i - rightSpace);
     } else {
-      right = " ".repeat(this.right.width());
+      rightOne = " ".repeat(this.right.width());
     } // else statement
-    return left + right;
+    return leftOne + rightOne;
   } //String row(int i)
 
   /**
